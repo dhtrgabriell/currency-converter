@@ -9,7 +9,7 @@ const error = document.querySelector(".error-message");
 const exchangeRatesTableBody = document.getElementById("exchangeRatesTableBody");
 
 // Lista de moedas
-const currencies = ["USD", "EUR", "GBP", "JPY", "AUD", "CAD", "CHF", "CNY", "BRL", "INR"];
+const currencies = ["USD", "EUR", "JPY", "AUD", "CHF", "CNY", "BRL"];
 
 const API_URL = "https://api.exchangerate-api.com/v4/latest/";
 
@@ -39,7 +39,7 @@ async function convertMoney() {
                 Taxa de câmbio: 1 ${fromCurrency.value} = ${rate} ${toCurrency.value}
             </div>
         `
-
+        
     } catch (err) {
         error.style.display = "block";
         error.innerHTML = "Erro ao converter moeda. Tente novamente.";
@@ -93,3 +93,8 @@ function populateCurrencyOptions() {
 }
 populateCurrencyOptions();
 fromCurrency.addEventListener("change", populateCurrencyOptions);
+
+form.addEventListener("update", function(event){
+    event.defaultPrevented()
+    populateCurrencyOptions()
+})
