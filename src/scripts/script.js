@@ -95,6 +95,6 @@ populateCurrencyOptions();
 fromCurrency.addEventListener("change", populateCurrencyOptions);
 
 form.addEventListener("update", function(event){
-    event.defaultPrevented()
+    event.preventDefault()
     populateCurrencyOptions()
 })
