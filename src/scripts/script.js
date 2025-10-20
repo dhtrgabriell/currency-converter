@@ -91,10 +91,18 @@ function populateCurrencyOptions() {
         }
     });
 }
+
+function atualizarTabela() {
+    const dados = populateCurrencyOptions();
+    return dados;
+}
+
+document.querySelector(".update-btn").addEventListener("click", atualizarTabela);
+
 populateCurrencyOptions();
 fromCurrency.addEventListener("change", populateCurrencyOptions);
 
-form.addEventListener("update", function(event){
+form.addEventListener("submit", function(event){
     event.preventDefault()
     populateCurrencyOptions()
 })
